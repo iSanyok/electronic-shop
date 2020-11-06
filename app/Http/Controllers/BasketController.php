@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -39,8 +41,8 @@ class BasketController extends Controller
                     session(['products' => $products]);
                     session()->save();
 
-                    return redirect($request->path() === '/product=' .$product->id
-                        ? '/product=' . $product->id
+                    return redirect($request->path() === '/product/' .$product->id
+                        ? '/product/' . $product->id
                         : '/basket');
                 }
             }
@@ -52,11 +54,11 @@ class BasketController extends Controller
             session()->push('products', $order);
             session()->save();
         }
-        return redirect('/product=' . $product->id);
+        return redirect('/product/' . $product->id);
     }
 
     //удаление товара из корзины
-    public function remove(Product $product)
+    public function destroy(Product $product)
     {
         $products = session()->get('products');
 
@@ -79,6 +81,32 @@ class BasketController extends Controller
 
     public function checkout()
     {
-        
+        return view('checkout');
+    }
+
+    public function payoff(Request $request)
+    {
+        $order = new Order();
+        $products = session()->get('products');
+
+        if(Auth::user()) {
+            $order->user_id = Auth::user()->id;
+
+        } else {
+
+            $validateAttributes = $request->validate([
+                'customer_name' => 'required',
+            ]);
+            $order->customer_name = $validateAttributes['customer_name'];
+        }
+
+        $order->price = $this->index()->summary_price;
+        $order->save();
+
+        foreach($products as $item) {
+            $order->products()->attach($item['product'], ['count' => $item['count']]);
+        }
+
+        return redirect('/')->with('message', 'Заказ оформлен. Спасибо за покупку!');
     }
 }

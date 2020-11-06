@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MainController extends Controller
 {
@@ -45,6 +47,15 @@ class MainController extends Controller
 
     public function profile()
     {
+        if(Gate::allows('admining')) {
+
+            return view('admin.panel');
+        } else {
+
+            $orders = Order::where('user_id', Auth::user()->id);
+
+            return view('home', compact('orders'));
+        }
     }
 
 }

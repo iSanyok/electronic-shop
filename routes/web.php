@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
@@ -23,18 +24,24 @@ Route::get('/profile', [MainController::class, 'profile'])->name('profile')->mid
 
 // все катогории и выбор одной категории
 Route::get('/categories', [MainController::class, 'categories'])->name('categories');
-Route::get('/categories={category}', [MainController::class, 'show'])->name('category');
+Route::get('/categories/{category}', [MainController::class, 'show'])->name('category');
 
-// страница товара
-Route::get('/product={product}', [ProductController::class, 'show'])->name('product');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product');
+Route::post('/products/{product}', [BasketController::class, 'add'])->name('add');
 
-// добавление товара в корзину со страницы товара
-Route::post('/products={product}', [BasketController::class, 'add'])->name('add');
+Route::prefix('basket')->group(function() {
+    Route::post('add/{product}', [BasketController::class, 'add'])->name('add');
+    Route::delete('destroy/{product}', [BasketController::class, 'destroy'])->name('destroy');
+    Route::post('checkout/payoff', [BasketController::class, 'payoff'])->name('payoff');
+    Route::get('checkout', [BasketController::class, 'checkout'])->name('checkout');
+    Route::get('/', [BasketController::class, 'index'])->name('basket');
+});
 
-// увеличение количество товаров из корзины
-Route::post('/basket={product}', [BasketController::class, 'add'])->name('add');
+//добавить мидлварь
+Route::prefix('/admin')->group(function() {
+    Route::get('add/category', [AdminController::class, 'add_category'])->name('add_category');
+    Route::get('add/product', [AdminController::class, 'add_product'])->name('add_product');
+    Route::get('orders', [AdminController::class, 'orders'])->name('orders');
+    Route::get('create/coupon', [AdminController::class, 'create_coupon'])->name('create_coupon');
+});
 
-// удаление одного товара из корзины
-Route::post('/basket={product}', [BasketController::class, 'remove'])->name('remove');
-
-Route::get('/basket', [BasketController::class, 'index'])->name('basket');
