@@ -11,7 +11,7 @@
         <a href="{{ route('add_product') }}">
             <button>Добавить товар</button>
         </a>
-        <a href="{{ route('create_coupon') }}">
+        <a href="{{ route('add_coupon') }}">
             <button>Создать купон</button>
         </a>
     </div>

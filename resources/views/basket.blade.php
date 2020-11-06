@@ -10,7 +10,7 @@
                     width="50" height="50"
                     style="margin-top: 15px">
                 <label style="margin-left: 25px">{{ $product['product']->name }}</label>
-                <label style="margin-left: 25px">Цена: {{ $product['product']->price }}р</label>
+                <label style="margin-left: 25px">Цена: {{ $product['product']->price * $product['count'] }}р</label>
                 <label style="margin-left: 25px">Количество: {{ $product['count'] }}</label>
                 <form method="POST" action="{{ route('add', $product) }}">
                     @csrf

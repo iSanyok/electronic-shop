@@ -22,7 +22,7 @@
                             @endif
                             <div class="box-style">
                                 <div class="content">
-                                    <div class="image"><img src="{{ $products[$i]->photo }}" width="324" height="200"
+                                    <div class="image"><img src="{{ asset('public/images/' . $products[$i]->photo) }}" width="324" height="200"
                                                             alt=""/>
                                     </div>
                                     <h2>{{ $products[$i]->name }}</h2>
