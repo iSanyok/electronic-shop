@@ -4,7 +4,7 @@
     <div style="margin-left: 20px">
         <form method="POST" action="{{ route('storeProduct') }}" enctype="multipart/form-data">
             @csrf
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Категория</label>
                 <select required name="category">
                     <option disabled>Категории</option>
@@ -18,7 +18,7 @@
                 </span>
                 @enderror
             </div>
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Название товара</label>
                 <input type="text" name="name">
 
@@ -28,7 +28,7 @@
                 </span>
                 @enderror
             </div>
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Описание товара</label>
                 <textarea name="description" style="width: 500px" rows="4"></textarea>
 
@@ -38,7 +38,7 @@
                 </span>
                 @enderror
             </div>
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Цена товара</label>
                 <input type="text" name="price">
 
@@ -48,7 +48,7 @@
                 </span>
                 @enderror
             </div>
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Фотография товара</label>
                 <input type="file" name="photo">
             </div>

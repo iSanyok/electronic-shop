@@ -4,15 +4,14 @@
     <div>
         <form method="POST" action="{{ route('storeCategory') }}">
             @csrf
-            <div >
+            <div style="margin-bottom: 1em">
                 <label>Название категории</label>
                 <input type="text" name="name">
             </div>
-            <div>
+            <div style="margin-bottom: 1em">
                 <label>Описание категории</label>
                 <textarea name="description" style="width: 500px; height: 200px"></textarea>
             </div>
-
             <button type="submit">Добавить категорию</button>
         </form>
     </div>

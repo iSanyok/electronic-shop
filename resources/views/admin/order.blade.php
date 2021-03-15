@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach($order->products as $product)
-    <div>
+    <div style="margin-bottom: 1em">
         <img
             src="{{ $product->photo }}"
             alt=""

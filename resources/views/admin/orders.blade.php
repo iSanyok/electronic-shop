@@ -3,7 +3,7 @@
 @section('content')
     @foreach($orders as $order)
         @if($order->customer)
-            <div style="padding-left: 10px">
+            <div style="padding-left: 10px; margin-bottom: 1em">
                 <label style="margin-bottom: 10px">Имя покупателя: {{ $order->customer->name }}</label>
                 <label>Электронная почта: {{ $order->customer->email }}</label>
                 <label>Цена заказа: {{ $order->price }}</label>
