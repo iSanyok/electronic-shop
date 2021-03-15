@@ -16,7 +16,7 @@ class MainController extends Controller
     {
         $products = $product->get();
 
-        return view('homepage', compact('products'));
+        return view('index', compact('products'));
     }
 
     // выбор всех категорий

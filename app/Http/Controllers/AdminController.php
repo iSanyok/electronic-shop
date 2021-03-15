@@ -40,7 +40,7 @@ class AdminController extends Controller
     public function addProduct(): Renderable
     {
         $categories = Category::get();
-        return view('admin.add_product', compact('categories'));
+        return view('admin.addProduct', compact('categories'));
     }
 
     public function storeProduct(Request $request): RedirectResponse

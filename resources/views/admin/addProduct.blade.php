@@ -2,7 +2,7 @@
 
 @section('content')
     <div style="margin-left: 20px">
-        <form method="POST" action="{{ route('store_product') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('storeProduct') }}" enctype="multipart/form-data">
             @csrf
             <div>
                 <label>Категория</label>

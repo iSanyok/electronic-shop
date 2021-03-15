@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 // главная страница, логин, регистрация и профиль пользователя
 
-Route::get('/', [MainController::class, 'index'])->name('mainpage');
+Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/login', [MainController::class, 'login'])->name('login');
 Route::get('/register', [MainController::class, 'register'])->name('register');
 Route::get('/profile', [MainController::class, 'profile'])->name('profile')->middleware('auth');
@@ -38,19 +38,18 @@ Route::prefix('/basket')->group(function() {
     Route::post('/checkout/payoff', [BasketController::class, 'payoff'])->name('payoff');
 });
 
-
 Route::prefix('/admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('panel');
 
-    Route::get('/add/category', [AdminController::class, 'add_category'])->name('add_category');
-    Route::post('/add/category/store', [AdminController::class, 'store_category'])->name('store_category');
+    Route::get('/add/category', [AdminController::class, 'addCategory'])->name('addCategory');
+    Route::post('/add/category/store', [AdminController::class, 'storeCategory'])->name('storeCategory');
 
-    Route::get('/add/product', [AdminController::class, 'add_product'])->name('add_product');
-    Route::post('/add/product/store', [AdminController::class, 'store_product'])->name('store_product');
+    Route::get('/add/product', [AdminController::class, 'addProduct'])->name('addProduct');
+    Route::post('/add/product/store', [AdminController::class, 'storeProduct'])->name('storeProduct');
 
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
     Route::get('/orders/{order}', [AdminController::class, 'order'])->name('order');
     Route::post('/orders/confirm/{order}', [AdminController::class, 'confirm'])->name('confirm');
 
-    Route::get('add/coupon', [AdminController::class, 'add_coupon'])->name('add_coupon');
+    Route::get('add/coupon', [AdminController::class, 'addCoupon'])->name('addCoupon');
 });

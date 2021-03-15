@@ -5,13 +5,13 @@
         <a href="{{ route('orders') }}">
             <button>Просмотреть заказы</button>
         </a>
-        <a href="{{ route('add_category') }}">
+        <a href="{{ route('addCategory') }}">
             <button>Добавить новую категорию</button>
         </a>
-        <a href="{{ route('add_product') }}">
+        <a href="{{ route('addProduct') }}">
             <button>Добавить товар</button>
         </a>
-        <a href="{{ route('add_coupon') }}">
+        <a href="{{ route('addCoupon') }}">
             <button>Создать купон</button>
         </a>
     </div>

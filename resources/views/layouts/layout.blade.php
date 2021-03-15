@@ -24,12 +24,25 @@ Released   : 20130406
     <div id="menu-wrapper">
         <div id="menu" class="container">
             <ul>
-                <li class="{{Request::path() === '/' ? 'current_page_item' : ''}}"><a href="{{ route('mainpage') }}">Главная</a></li>
-                <li class="{{Request::path() === 'categories' ? 'current_page_item' : ''}}"><a href="{{ route('categories') }}">Категории</a></li>
-                <li class="{{Request::path() === 'basket' ? 'current_page_item' : ''}}"><a href="{{ route('basket') }}">Корзина</a></li>
-                <li class="{{Request::path() === 'contacts' ? 'current_page_item' : ''}}"><a href="#">Наши магазины</a></li>
+                <li class="{{Request::path() === '/' ? 'current_page_item' : ''}}">
+                    <a href="{{ route('index') }}">Главная</a></li>
+
+                <li class="{{Request::path() === 'categories' ? 'current_page_item' : ''}}">
+                    <a href="{{ route('categories') }}">Категории</a></li>
+
+                <li class="{{Request::path() === 'basket' ? 'current_page_item' : ''}}">
+                    <a href="{{ route('basket') }}">Корзина</a></li>
+
+                <li class="{{Request::path() === 'contacts' ? 'current_page_item' : ''}}">
+                    <a href="#">Наши магазины</a></li>
                 @auth
-                    <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ route('profile') }}">Профиль</a></li>
+                    @can('admin')
+                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
+                            <a href="{{ route('panel') }}">Профиль</a></li>
+                    @else
+                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
+                            <a href="{{ route('profile') }}">Профиль</a></li>
+                    @endcan
                     <li class="{{Request::path() === 'logout' ? 'current_page_item' : ''}}"><a href="{{ route('logout') }}"
                                                                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
