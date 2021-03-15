@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Gate;
 
 class MainController extends Controller
 {
+    /**
+     * Открыть главную страницу магазина
+     *
+     * @param Product $product
+     * @return Renderable
+     */
     public function index(Product $product): Renderable
     {
         $products = $product->get();
@@ -19,14 +25,23 @@ class MainController extends Controller
         return view('index', compact('products'));
     }
 
-    // выбор всех категорий
+    /**
+     * Открыть страницу категорий
+     *
+     * @return Renderable
+     */
     public function categories(): Renderable
     {
         $categories = Category::get();
         return view('categories', compact('categories'));
     }
 
-    // выбор товаров определенной категории
+    /**
+     * Открыть страницу товаров определенной категории
+     *
+     * @param Category $category
+     * @return Renderable
+     */
     public function show(Category $category): Renderable
     {
         $products = Product::where('category_id', $category->id)->get();
@@ -37,23 +52,34 @@ class MainController extends Controller
         ]);
     }
 
+    /**
+     * Открыть страницу логина пользователей
+     *
+     * @return Renderable
+     */
     public function login(): Renderable
     {
         return view('auth.login');
     }
 
+    /**
+     * Открыть страницу регистрации пользователей
+     *
+     * @return Renderable
+     */
     public function register(): Renderable
     {
         return view('auth.register');
     }
 
+    /**
+     * Отрыть страницу профиля пользователя
+     *
+     * @return Renderable
+     */
     public function profile(): Renderable
     {
-        if(Gate::allows('admin')) {
-            return view('admin.panel');
-        } else {
-            $orders = Order::where('user_id', Auth::user()->id);
-            return view('home', compact('orders'));
-        }
+        $orders = Order::where('user_id', Auth::user()->id);
+        return view('home', compact('orders'));
     }
 }

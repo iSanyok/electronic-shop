@@ -37,10 +37,10 @@ Released   : 20130406
                     <a href="#">Наши магазины</a></li>
                 @auth
                     @can('admin')
-                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
-                            <a href="{{ route('panel') }}">Профиль</a></li>
+                        <li class="{{Request::path() === 'admin' ? 'current_page_item' : ''}}">
+                            <a href="{{ route('panel') }}">Панель админа</a></li>
                     @else
-                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
+                        <li class="{{Request::path() === 'profile' ? 'current_page_item' : ''}}">
                             <a href="{{ route('profile') }}">Профиль</a></li>
                     @endcan
                     <li class="{{Request::path() === 'logout' ? 'current_page_item' : ''}}"><a href="{{ route('logout') }}"

@@ -14,17 +14,33 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    /**
+     * Открыть страницу панель админа
+     *
+     * @return Renderable
+     */
     public function index(): Renderable
     {
         return view('admin.panel');
     }
 
-    public function add_category(): Renderable
+    /**
+     * Открыть страницу добавления категории
+     *
+     * @return Renderable
+     */
+    public function addCategory(): Renderable
     {
-        return view('admin.add_category');
+        return view('admin.addCategory');
     }
 
-    public function store_category(Request $request): RedirectResponse
+    /**
+     * Сохранить новую категорию в базе данных
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function storeCategory(Request $request): RedirectResponse
     {
         $validateAttributes = $request->validate([
             'name' => 'required',
@@ -34,15 +50,27 @@ class AdminController extends Controller
         $category = new Category($validateAttributes);
         $category->save();
 
-        return redirect('/admin');
+        return redirect(route('panel'));
     }
 
+    /**
+     * Открыть страницу добавления товара
+     *
+     * @return Renderable
+     */
     public function addProduct(): Renderable
     {
         $categories = Category::get();
         return view('admin.addProduct', compact('categories'));
     }
 
+    /**
+     * Сохранить новый товар в базе данных
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function storeProduct(Request $request): RedirectResponse
     {
         $validateAttributes = Validator::make($request->all(), [
@@ -66,25 +94,42 @@ class AdminController extends Controller
         $product->photo = $path[2];
         $product->save();
 
-        return redirect('/admin');
+        return redirect(route('panel'));
     }
 
+    /**
+     * Открыть страницу со списком всех заказов
+     *
+     * @return Renderable
+     */
     public function orders(): Renderable
     {
         $orders = Order::get();
         return view('admin.orders', compact('orders'));
     }
 
+    /**
+     * Открыть страницу определенного заказа
+     *
+     * @param Order $order
+     * @return Renderable
+     */
     public function order(Order $order): Renderable
     {
         return view('admin.order', compact('order'));
     }
 
+    /**
+     * Подтвердить определенный заказ
+     *
+     * @param Order $order
+     * @return RedirectResponse
+     */
     public function confirm(Order $order): RedirectResponse
     {
         $order->status = 1;
         $order->save();
-        return redirect('/admin/orders');
+        return redirect(route('orders'));
     }
 
     public function addCoupon()
