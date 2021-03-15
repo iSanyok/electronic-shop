@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
-    public function index()
+    public function index(): Renderable
     {
         $products = session()->get('products');
 
@@ -28,7 +30,7 @@ class BasketController extends Controller
     }
 
     //добавление товара в корзину
-    public function add(Product $product, Request $request)
+    public function add(Product $product, Request $request): RedirectResponse
     {
         $order = ['product' => $product, 'count' => 1];
 
@@ -58,7 +60,7 @@ class BasketController extends Controller
     }
 
     //удаление товара из корзины
-    public function destroy(Product $product)
+    public function destroy(Product $product): RedirectResponse
     {
         $products = session()->get('products');
 
@@ -79,7 +81,7 @@ class BasketController extends Controller
         }
     }
 
-    public function checkout()
+    public function checkout(): Renderable
     {
         return view('checkout');
     }
@@ -93,7 +95,6 @@ class BasketController extends Controller
             $order->user_id = Auth::user()->id;
 
         } else {
-
             $validateAttributes = $request->validate([
                 'customer_name' => 'required',
             ]);
@@ -106,7 +107,6 @@ class BasketController extends Controller
         foreach($products as $item) {
             $order->products()->attach($item['product'], ['count' => $item['count']]);
         }
-
         return redirect('/')->with('message', 'Заказ оформлен. Спасибо за покупку!');
     }
 }

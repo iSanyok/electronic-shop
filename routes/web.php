@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // главная страница, логин, регистрация и профиль пользователя
+
 Route::get('/', [MainController::class, 'index'])->name('mainpage');
 Route::get('/login', [MainController::class, 'login'])->name('login');
 Route::get('/register', [MainController::class, 'register'])->name('register');
@@ -37,7 +38,7 @@ Route::prefix('/basket')->group(function() {
     Route::post('/checkout/payoff', [BasketController::class, 'payoff'])->name('payoff');
 });
 
-//добавить мидлварь
+
 Route::prefix('/admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('panel');
 

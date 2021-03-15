@@ -5,6 +5,7 @@
         <form method="POST" action="{{ route('store_product') }}" enctype="multipart/form-data">
             @csrf
             <div>
+                <label>Категория</label>
                 <select required name="category">
                     <option disabled>Категории</option>
                     @foreach($categories as $category)
@@ -29,7 +30,7 @@
             </div>
             <div>
                 <label>Описание товара</label>
-                <textarea name="description" style="width: 500px; height: 200px"></textarea>
+                <textarea name="description" style="width: 500px" rows="4"></textarea>
 
                 @error('description')
                 <span>

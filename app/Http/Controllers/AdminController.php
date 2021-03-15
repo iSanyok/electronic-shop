@@ -5,25 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\File;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function index() {
-
+    public function index(): Renderable
+    {
         return view('admin.panel');
     }
 
-    public function add_category() {
-
+    public function add_category(): Renderable
+    {
         return view('admin.add_category');
     }
 
-    public function store_category(Request $request) {
-
+    public function store_category(Request $request): RedirectResponse
+    {
         $validateAttributes = $request->validate([
             'name' => 'required',
             'description' => 'required'
@@ -35,14 +37,14 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    public function add_product() {
-
+    public function addProduct(): Renderable
+    {
         $categories = Category::get();
         return view('admin.add_product', compact('categories'));
     }
 
-    public function store_product(Request $request) {
-
+    public function storeProduct(Request $request): RedirectResponse
+    {
         $validateAttributes = Validator::make($request->all(), [
             'name' => 'required|unique:products',
             'description' => 'required',
@@ -50,10 +52,9 @@ class AdminController extends Controller
             'photo' => 'required',
         ]);
 
-        if($validateAttributes->fails()) {
+        if ($validateAttributes->fails()) {
             return redirect('/admin/add/product')->withErrors($validateAttributes->errors());
         }
-
 
         $path = $request->file('photo')->store('public/images');
         $path = explode('/', $path);
@@ -68,26 +69,26 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    public function orders() {
-
+    public function orders(): Renderable
+    {
         $orders = Order::get();
         return view('admin.orders', compact('orders'));
     }
 
-    public function order(Order $order) {
-
+    public function order(Order $order): Renderable
+    {
         return view('admin.order', compact('order'));
     }
 
-    public function confirm(Order $order) {
-
+    public function confirm(Order $order): RedirectResponse
+    {
         $order->status = 1;
         $order->save();
-
         return redirect('/admin/orders');
     }
 
-    public function add_coupon() {
+    public function addCoupon()
+    {
 
     }
 }
