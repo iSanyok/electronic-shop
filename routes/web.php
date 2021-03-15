@@ -38,7 +38,7 @@ Route::prefix('/basket')->group(function() {
     Route::post('/checkout/payoff', [BasketController::class, 'payoff'])->name('payoff');
 });
 
-Route::prefix('/admin')->group(function() {
+Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('panel');
 
     Route::get('/add/category', [AdminController::class, 'addCategory'])->name('addCategory');
