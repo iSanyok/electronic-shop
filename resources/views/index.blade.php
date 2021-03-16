@@ -18,7 +18,7 @@
             <div class="tbox{{ ($loop->index % 3) + 1}}">
                 <div class="box-style">
                     <div class="content">
-                        <div class="image"><img src="{{ asset('public/images/' . $product->photo) }}" width="324" height="200"
+                        <div class="image"><img src="{{ asset('storage/' . $product->photo) }}" width="324" height="200"
                                                 alt=""/>
                         </div>
                         <h2>{{ $product->name }}</h2>

@@ -59,5 +59,7 @@ Released   : 20130406
     </div>
     @yield('content')
 </div>
+
+<script src="http://unpkg.com/turbolinks"></script>
 </body>
 </html>

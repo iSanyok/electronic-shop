@@ -85,7 +85,7 @@ class AdminController extends Controller
             return redirect(route('addProduct'))->withErrors($data->errors());
         }
 
-        $request->file('photo')->store('storage');
+        $request->file('photo')->store('public');
         $product = new Product($data->validated());
         $product->photo = $request->file('photo')->hashName();
         $product->save();

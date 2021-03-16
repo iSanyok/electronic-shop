@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df800fe4-9065-4d28-9c5e-2a62f24be848" name="Default Changelist" comment="admin panel">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/addProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/addProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/92VtnqTn61DAXkquoeRe8kmHipDnfbEBu82bShhZ.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/AlsRxbW9jnjeprpFGjtldyCyRPZjzNqwaRsxSRG2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/I6wdBFmr2gvPBiorxrG8JZkF0vQIRL3MaFVZwoUG.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/I895mU8Wmf0nLB3U3Lr2GbYuL7d8xJNyZ5AMVijL.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/MOlsYS1n7Rba1kIR5BlkAn4kjZP8vzV4V97iwyW5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/kM8gWM5rKxln3EvHtT9tXhq8GHtnIjjHbk4ngDtn.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/images/mmQWINvK1FZQZRU1B4jKyWWWz1MnwIygmu1wMoho.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,14 +186,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/css" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/css" />
       <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/storage/app/public" />
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -232,7 +228,8 @@
       <workItem from="1604652357688" duration="22041000" />
       <workItem from="1615811135047" duration="7268000" />
       <workItem from="1615831281934" duration="10059000" />
-      <workItem from="1615893538948" duration="1633000" />
+      <workItem from="1615893538948" duration="3111000" />
+      <workItem from="1615898053759" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="admin panel">
       <created>1604621162539</created>
