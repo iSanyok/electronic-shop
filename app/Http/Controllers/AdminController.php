@@ -73,25 +73,21 @@ class AdminController extends Controller
      */
     public function storeProduct(Request $request): RedirectResponse
     {
-        $validateAttributes = Validator::make($request->all(), [
+        $data = Validator::make($request->all(), [
+            'category_id' => 'required|numeric',
             'name' => 'required|unique:products',
             'description' => 'required',
-            'price' => 'required|alpha_num',
-            'photo' => 'required',
+            'price' => 'required|numeric',
+            'photo' => 'required|image',
         ]);
 
-        if ($validateAttributes->fails()) {
-            return redirect('/admin/add/product')->withErrors($validateAttributes->errors());
+        if ($data->fails()) {
+            return redirect(route('addProduct'))->withErrors($data->errors());
         }
 
-        $path = $request->file('photo')->store('public/images');
-        $path = explode('/', $path);
-       //$photo = $request->photo->move(public_path('images'), time().'_'.$request->photo->getClientOriginalName());
-//        dd($request->photo);
-
-        $product = new Product($validateAttributes->validated());
-        $product->category_id = $request->category;
-        $product->photo = $path[2];
+        $request->file('photo')->store('storage');
+        $product = new Product($data->validated());
+        $product->photo = $request->file('photo')->hashName();
         $product->save();
 
         return redirect(route('panel'));

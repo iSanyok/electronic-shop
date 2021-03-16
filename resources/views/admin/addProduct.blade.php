@@ -6,7 +6,7 @@
             @csrf
             <div style="margin-bottom: 1em">
                 <label>Категория</label>
-                <select required name="category">
+                <select required name="category_id">
                     <option disabled>Категории</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
