@@ -20,7 +20,7 @@ class MainController extends Controller
      */
     public function index(Product $product): Renderable
     {
-        $products = $product->get();
+        $products = $product->paginate(9);
 
         return view('index', compact('products'));
     }
@@ -44,9 +44,9 @@ class MainController extends Controller
      */
     public function show(Category $category): Renderable
     {
-        $products = Product::where('category_id', $category->id)->get();
+        $products = Product::where('category_id', $category->id)->paginate(9);
 
-        return view('homepage', [
+        return view('index', [
             'products' => $products,
             'category' => $category,
         ]);

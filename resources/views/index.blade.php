@@ -13,8 +13,10 @@
             <h2 style="margin-left: 30%">{{ session('message') }}</h2>
         @endif
     </div>
-    <div id="three-column" class="container">
         @foreach($products as $product)
+            @if($loop->first || ($loop->index % 3 == 0))
+                <div id="three-column" class="container">
+            @endif
             <div class="tbox{{ ($loop->index % 3) + 1}}">
                 <div class="box-style">
                     <div class="content">
@@ -27,8 +29,12 @@
                     </div>
                 </div>
             </div>
-            @if(($loop->index + 1) % 3 == 0)
-    </div><div id="three-column" class="container">
+            @if(($loop->index + 1) % 3 == 0 || $loop->last)
+                </div>
             @endif
     @endforeach
+    </div>
+                <div style="margin-left: 45%">
+                    {{ $products->links() }}
+                </div>
 @endsection

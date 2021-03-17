@@ -11,14 +11,20 @@ use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
+    /**
+     * Открыть страницу корзины
+     *
+     * @return Renderable
+     */
     public function index(): Renderable
     {
         $products = session()->get('products');
 
+        // считается цена всех товаров в корзине
         $summary_price = 0;
-        if (isset($products)) {
-            foreach ($products as $product) {
-                $summary_price = $summary_price + $product['product']->price * $product['count'];
+        if ($products) {
+            foreach ($products as list('product' => $product, 'count' => $count)) {
+                $summary_price = $summary_price + $product->price * $count;
             }
         } else {
             $products = [];
@@ -29,8 +35,13 @@ class BasketController extends Controller
         ]);
     }
 
-    //добавление товара в корзину
-    public function add(Product $product, Request $request): RedirectResponse
+    /**
+     * Добавление товара в корзину
+     *
+     * @param Product $product
+     * @return RedirectResponse
+     */
+    public function add(Product $product): RedirectResponse
     {
         $order = ['product' => $product, 'count' => 1];
 
@@ -43,9 +54,7 @@ class BasketController extends Controller
                     session(['products' => $products]);
                     session()->save();
 
-                    return redirect($request->path() === '/product/' .$product->id
-                        ? '/product/' . $product->id
-                        : '/basket');
+                    return back();
                 }
             }
 
@@ -56,10 +65,15 @@ class BasketController extends Controller
             session()->push('products', $order);
             session()->save();
         }
-        return redirect('/product/' . $product->id);
+        return back();
     }
 
-    //удаление товара из корзины
+    /**
+     * Удаление товара из корзины
+     *
+     * @param Product $product
+     * @return RedirectResponse
+     */
     public function destroy(Product $product): RedirectResponse
     {
         $products = session()->get('products');
@@ -81,6 +95,11 @@ class BasketController extends Controller
         }
     }
 
+    /**
+     * Открыть страницу подтверждения заказа
+     *
+     * @return Renderable
+     */
     public function checkout(): Renderable
     {
         return view('checkout');
@@ -104,8 +123,8 @@ class BasketController extends Controller
         $order->price = $this->index()->summary_price;
         $order->save();
 
-        foreach($products as $item) {
-            $order->products()->attach($item['product'], ['count' => $item['count']]);
+        foreach($products as list('product' => $product, 'count' => $count)) {
+            $order->products()->attach($product, ['count' => $count]);
         }
         return redirect('/')->with('message', 'Заказ оформлен. Спасибо за покупку!');
     }
