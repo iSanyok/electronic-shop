@@ -20,7 +20,7 @@
             </div>
             <div style="margin-bottom: 1em">
                 <label>Название товара</label>
-                <input type="text" name="name">
+                <input type="text" name="name" value="{{ old('name') }}">
 
                 @error('name')
                 <span>
@@ -30,7 +30,7 @@
             </div>
             <div style="margin-bottom: 1em">
                 <label>Описание товара</label>
-                <textarea name="description" style="width: 500px" rows="4"></textarea>
+                <textarea name="description" style="width: 500px" rows="4">{{ old('description') }}</textarea>
 
                 @error('description')
                 <span>

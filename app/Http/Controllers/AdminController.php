@@ -6,11 +6,8 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -73,7 +70,7 @@ class AdminController extends Controller
      */
     public function storeProduct(Request $request): RedirectResponse
     {
-        $data = Validator::make($request->all(), [
+        $data = $request->validate([
             'category_id' => 'required|numeric',
             'name' => 'required|unique:products',
             'description' => 'required',
@@ -81,12 +78,8 @@ class AdminController extends Controller
             'photo' => 'required|image',
         ]);
 
-        if ($data->fails()) {
-            return redirect(route('addProduct'))->withErrors($data->errors());
-        }
-
         $request->file('photo')->store('public');
-        $product = new Product($data->validated());
+        $product = new Product($data);
         $product->photo = $request->file('photo')->hashName();
         $product->save();
 
