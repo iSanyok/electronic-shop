@@ -39,12 +39,12 @@ class AdminController extends Controller
      */
     public function storeCategory(Request $request): RedirectResponse
     {
-        $validateAttributes = $request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
 
-        $category = new Category($validateAttributes);
+        $category = new Category($data);
         $category->save();
 
         return redirect(route('panel'));

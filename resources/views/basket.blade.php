@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="container">
-        @forelse($products as $product)
+        @forelse($products as list('product' => $product, 'count' => $count))
             <div>
                 <img
-                    src="{{ $product['product']->photo }}"
+                    src="{{ asset('storage/' . $product->photo) }}"
                     alt=""
                     width="50" height="50"
                     style="margin-top: 15px">
-                <label style="margin-left: 25px">{{ $product['product']->name }}</label>
-                <label style="margin-left: 25px">Цена: {{ $product['product']->price * $product['count'] }}р</label>
-                <label style="margin-left: 25px">Количество: {{ $product['count'] }}</label>
+                <label style="margin-left: 25px">{{ $product->name }}</label>
+                <label style="margin-left: 25px">Цена: {{ $product->price * $count }}р</label>
+                <label style="margin-left: 25px">Количество: {{ $count }}</label>
                 <form method="POST" action="{{ route('add', $product) }}">
                     @csrf
                     <button style="flex: auto">+</button>
