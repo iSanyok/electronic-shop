@@ -8,7 +8,7 @@
         <h1 style="margin-bottom: 1em;">Цена: {{ $product->price }}р.</h1>
         <form method="POST" action="{{ route('add', [$product]) }}">
             @csrf
-            <button type="submit">Добавить в корзину</button>
+            <button type="submit" class="btn btn-dark">Добавить в корзину</button>
         </form>
     </div>
 @endsection

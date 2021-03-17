@@ -14,29 +14,28 @@
                 <label style="margin-left: 25px">Количество: {{ $count }}</label>
                 <form method="POST" action="{{ route('add', $product) }}">
                     @csrf
-                    <button style="flex: auto">+</button>
+                    <button style="flex: auto" class="btn btn-dark">+</button>
                 </form>
                 <form method="POST" action="{{ route('destroy', $product) }}">
                     @csrf
                     @method('DELETE')
-                    <button style="margin-top: 5px">-</button>
+                    <button style="margin-top: 5px" class="btn btn-dark">-</button>
                 </form>
             </div>
         @empty
             <label class="title" style="margin-left: 40%">Корзина пуста.</label>
         @endforelse
         @if($products)
-
             <label class="title" style="margin-top: 10px">Общая сумма: {{ $summary_price }}р.</label>
             <div style="margin-top: 15px">
                 @guest
                     <a href="{{ route('checkout') }}">
-                        <button>Оформить заказ</button>
+                        <button class="btn btn-dark">Оформить заказ</button>
                     </a>
                 @else
                     <form method="POST" action="{{ route('payoff') }}">
                         @csrf
-                        <button>Оформить заказ</button>
+                        <button class="btn btn-dark">Оформить заказ</button>
                     </form>
                 @endguest
             </div>
