@@ -1,18 +1,20 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div>
+    <div style="margin-left: 3em; width: 500px">
         <form method="POST" action="{{ route('storeCategory') }}">
             @csrf
-            <div style="margin-bottom: 1em">
-                <label>Название категории</label>
-                <input type="text" name="name" value="{{ old('name') }}">
+            <label for="name">Название категории</label>
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" class="form-control"
+                       aria-describedby="inputGroup-sizing-sm" value="{{ old('name') }}" name="name" id="name">
             </div>
-            <div style="margin-bottom: 1em">
-                <label>Описание категории</label>
-                <textarea name="description" style="width: 500px; height: 200px">{{ old('description') }}</textarea>
+            <label for="description">Описание категории</label>
+            <div class="input-group">
+                <textarea class="form-control" aria-label="With textarea" id="description"
+                          name="description" rows="4">{{ old('description') }}</textarea>
             </div>
-            <button type="submit">Добавить категорию</button>
+            <button type="submit" class="btn btn-secondary" style="margin-top: 1em">Добавить категорию</button>
         </form>
     </div>
 @endsection

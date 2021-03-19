@@ -25,7 +25,7 @@
                         </div>
                         <h2>{{ $product->name }}</h2>
                         <p>{{ $product->description }}</p>
-                        <a href="{{ route('product', [$product]) }}" class="button">Подробнее</a>
+                        <a href="{{ route('product', [$product]) }}" class="btn btn-dark">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             @endif
     @endforeach
     </div>
-                <div style="margin-left: 45%">
+                <div style="margin-left: 45%; padding-top: 1em">
                     {{ $products->links() }}
                 </div>
 @endsection

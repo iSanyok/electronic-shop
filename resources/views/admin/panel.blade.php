@@ -1,25 +1,25 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div>
+    <div style="margin-left: 3em">
         <div style="margin-bottom: 1em">
             <a href="{{ route('orders') }}">
-                <button>Просмотреть заказы</button>
+                <button class="btn btn-secondary">Просмотреть заказы</button>
             </a>
         </div>
         <div style="margin-bottom: 1em">
             <a href="{{ route('addCategory') }}">
-                <button>Добавить новую категорию</button>
+                <button class="btn btn-secondary">Добавить новую категорию</button>
             </a>
         </div>
         <div style="margin-bottom: 1em">
             <a href="{{ route('addProduct') }}">
-                <button>Добавить товар</button>
+                <button class="btn btn-secondary">Добавить товар</button>
             </a>
         </div>
         <div style="margin-bottom: 1em">
             <a href="{{ route('addCoupon') }}">
-                <button>Создать купон</button>
+                <button class="btn btn-secondary">Создать купон</button>
             </a>
         </div>
     </div>

@@ -20,7 +20,7 @@ class MainController extends Controller
      */
     public function index(Product $product): Renderable
     {
-        $products = $product->paginate(9);
+        $products = $product->latest()->paginate(9);
 
         return view('index', compact('products'));
     }
@@ -44,12 +44,9 @@ class MainController extends Controller
      */
     public function show(Category $category): Renderable
     {
-        $products = Product::where('category_id', $category->id)->paginate(9);
+        $products = Product::where('category_id', $category->id)->latest()->paginate(9);
 
-        return view('index', [
-            'products' => $products,
-            'category' => $category,
-        ]);
+        return view('index', compact('category', 'products'));
     }
 
     /**
