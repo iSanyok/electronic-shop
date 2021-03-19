@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="df800fe4-9065-4d28-9c5e-2a62f24be848" name="Default Changelist" comment="admin panel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/basket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/basket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/checkout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +229,8 @@
       <workItem from="1615898053759" duration="2046000" />
       <workItem from="1615900113810" duration="1208000" />
       <workItem from="1615976564416" duration="233000" />
-      <workItem from="1615976808005" duration="9143000" />
+      <workItem from="1615976808005" duration="9403000" />
+      <workItem from="1616148959865" duration="1209000" />
     </task>
     <task id="LOCAL-00001" summary="admin panel">
       <created>1604621162539</created>
