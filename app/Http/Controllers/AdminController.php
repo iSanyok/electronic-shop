@@ -93,7 +93,7 @@ class AdminController extends Controller
      */
     public function orders(): Renderable
     {
-        $orders = Order::get();
+        $orders = Order::paginate(10);
         return view('admin.orders', compact('orders'));
     }
 

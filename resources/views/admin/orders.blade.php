@@ -30,4 +30,7 @@
             </div>
         @endif
     @endforeach
+    <div class="d-flex justify-content-center pt-1">
+        {{ $orders->links() }}
+    </div>
 @endsection
