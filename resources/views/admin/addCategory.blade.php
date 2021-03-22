@@ -10,6 +10,11 @@
                     <input type="text" class="form-control"
                            aria-describedby="inputGroup-sizing-sm" value="{{ old('name') }}" name="name" id="name">
                 </div>
+                @error('name')
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="description">Описание категории</label>
@@ -18,6 +23,11 @@
                           name="description" rows="4" cols="61">{{ old('description') }}</textarea>
                 </div>
             </div>
+            @error('description')
+            <div class="alert alert-danger" role="alert">
+                {{ $message }}
+            </div>
+            @enderror
             <button type="submit" class="btn btn-secondary">Добавить категорию</button>
         </form>
     </div>
