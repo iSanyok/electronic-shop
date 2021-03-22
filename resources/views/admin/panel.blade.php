@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+        @if(session()->has('message'))
+            <div class="alert alert-success" role="alert">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="mb-2">
             <a href="{{ route('orders') }}">
                 <button class="btn btn-secondary">Просмотреть заказы</button>

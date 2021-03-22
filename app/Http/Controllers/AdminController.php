@@ -47,7 +47,7 @@ class AdminController extends Controller
         $category = new Category($data);
         $category->save();
 
-        return redirect(route('panel'));
+        return redirect(route('panel'))->with('message', 'Категория успешно добавлена.');
     }
 
     /**
@@ -83,7 +83,7 @@ class AdminController extends Controller
         $product->photo = $request->file('photo')->hashName();
         $product->save();
 
-        return redirect(route('panel'));
+        return redirect(route('panel'))->with('message', 'Товар успешно добавлен.');
     }
 
     /**
