@@ -2,18 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div>
+        <div class="mb-2">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group row">
                     <label for="name"
-                           class="col-form-label text-md-right" style="margin-bottom: -3em">{{ __('Имя') }}</label>
+                           class="col-form-label text-md-right">{{ __('Имя') }}</label>
 
                     <div class="col-md-6">
                         <input id="name" type="text"
-                               class="form-control @error('name') is-invalid @enderror mt-5" name="name"
-                               value="{{ old('name') }}" required autocomplete="name" autofocus
-                               style="margin-bottom: 1em;">
+                               class="form-control @error('name') is-invalid @enderror" name="name"
+                               value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -30,8 +29,7 @@
                     <div class="col-md-6">
                         <input id="email" type="email"
                                class="form-control @error('email') is-invalid @enderror" name="email"
-                               value="{{ old('email') }}" required autocomplete="email"
-                               style="margin-bottom: 1em;">
+                               value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -48,7 +46,7 @@
                     <div class="col-md-6">
                         <input id="password" type="password"
                                class="form-control @error('password') is-invalid @enderror" name="password"
-                               required autocomplete="new-password" style="margin-bottom: 1em;">
+                               required autocomplete="new-password">
 
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -64,14 +62,13 @@
 
                     <div class="col-md-6">
                         <input id="password-confirm" type="password" class="form-control"
-                               name="password_confirmation" required autocomplete="new-password"
-                               style="margin-bottom: 1em;">
+                               name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
 
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-2">
-                        <button type="submit" class="btn btn-primary"   >
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md-2 mt-2">
+                        <button type="submit" class="btn btn-primary">
                             {{ __('Зарегестрироваться') }}
                         </button>
                     </div>

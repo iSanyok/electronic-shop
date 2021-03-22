@@ -10,7 +10,7 @@
     </div>
     <div>
         @if(session()->has('message'))
-            <h2 style="margin-left: 30%">{{ session('message') }}</h2>
+            <h2 class="text-center">{{ session('message') }}</h2>
         @endif
     </div>
         @foreach($products as $product)
@@ -34,7 +34,7 @@
             @endif
     @endforeach
     </div>
-                <div style="margin-left: 45%; padding-top: 1em">
+                <div class="d-flex justify-content-center pt-1">
                     {{ $products->links() }}
                 </div>
 @endsection

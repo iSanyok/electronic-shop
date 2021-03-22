@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div>
+        <div class="mb-2">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group row">
@@ -11,14 +11,13 @@
 
                     <div class="col-md-6">
                         <input id="email" type="email"
-                               class="form-control @error('email') is-invalid @enderror" name="email"
-                               value="{{ old('email') }}" required autocomplete="email" autofocus
-                               style="margin-bottom: 1em;">
+                               class="form-control @error('email') is-invalid @enderror mb-1" name="email"
+                               value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                         @enderror
                     </div>
                 </div>
@@ -29,13 +28,13 @@
 
                     <div class="col-md-6">
                         <input id="password" type="password"
-                               class="form-control @error('password') is-invalid @enderror" name="password"
-                               required autocomplete="current-password" style="margin-bottom: 1em;">
+                               class="form-control @error('password') is-invalid @enderror mb-1" name="password"
+                               required autocomplete="current-password">
 
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                         @enderror
                     </div>
                 </div>
@@ -55,12 +54,12 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-8 ">
-                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">
+                        <button type="submit" class="btn btn-primary">
                             {{ __('Войти') }}
                         </button>
 
                         @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}" style="margin-left: 10px;">
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('Забыли свой пароль?') }}
                             </a>
                         @endif

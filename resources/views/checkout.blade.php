@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-2">
         <form method="POST" action="{{ route('payoff') }}">
             @csrf
             <div>
@@ -12,8 +12,7 @@
                     <div class="col-md-6">
                         <input id="email" type="email"
                                class="form-control @error('email') is-invalid @enderror" name="email"
-                               value="{{ old('email') }}" required autocomplete="email" autofocus
-                               style="margin-bottom: 1em;">
+                               value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -23,8 +22,7 @@
                     <div class="col-md-6">
                         <input id="customer_name" type="text"
                                class="form-control" name="customer_name"
-                               value="{{ old('customer_name') }}" autofocus
-                               style="margin-bottom: 1em;">
+                               value="{{ old('customer_name') }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -34,11 +32,10 @@
                     <div class="col-md-6">
                         <input id="phone" type="text"
                                class="form-control" name="phone"
-                               value="{{ old('phone') }}" autofocus
-                               style="margin-bottom: 1em;">
+                               value="{{ old('phone') }}">
                     </div>
                 </div>
-                <input type="submit" value="Подтвердить покупку">
+                <button class="btn btn-primary mt-2" type="submit">Подтвердить покупку</button>
             </div>
         </form>
     </div>
