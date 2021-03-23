@@ -136,6 +136,8 @@ class BasketController extends Controller
         foreach ($products as list('product' => $product, 'count' => $count)) {
             $order->products()->attach($product, ['count' => $count]);
         }
+
+        session()->forget('products');
         return redirect(route('index'))->with('message', 'Заказ оформлен. Спасибо за покупку!');
     }
 }
