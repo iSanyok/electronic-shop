@@ -16,13 +16,13 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="customer_name"
+                    <label for="name"
                            class="col-form-label text-md-right">{{ __('Имя') }}</label>
 
                     <div class="col-md-6">
-                        <input id="customer_name" type="text"
-                               class="form-control" name="customer_name"
-                               value="{{ old('customer_name') }}">
+                        <input id="name" type="text"
+                               class="form-control" name="name"
+                               value="{{ old('name') }}">
                     </div>
                 </div>
                 <div class="form-group row">
