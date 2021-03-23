@@ -1,9 +1,10 @@
 @extends('layouts.layout')
 
 @section('content')
-    @foreach($orders as $order)
-        @if($order->customer)
-            <div class="container mb-3">
+    <div class="container mb-3">
+        <h2 class="text-center mb-2">ПРОСМОТР ЗАКАЗОВ</h2>
+        @foreach($orders as $order)
+            @if($order->customer)
                 <div class="mb-1">
                     <label>Имя покупателя: {{ $order->customer->name }}</label>
                 </div>
@@ -11,26 +12,24 @@
                     <label>Электронная почта: {{ $order->customer->email }}</label>
                 </div>
                 <div class="mb-1">
-                    <label>Цена заказа: {{ $order->price }}</label>
+                    <label>Цена заказа: {{ $order->price }}р.</label>
                 </div>
                 <div class="mb-1">
                     <a href="{{ route('order', ['order' => $order]) }}">
-                        <button class="btn btn-secondary">Перейти к заказу</button></a>
+                        <button class="btn btn-secondary btn-sm mb-3">Перейти к заказу</button></a>
                 </div>
-            </div>
-        @else
-            <div class="container mb-3">
+            @else
                 <div class="mb-1">
                     <label>Имя покупателя:{{ $order->customer_name }}</label>
                 </div>
                 <div class="mb-1">
                     <a href="{{ route('order', ['order' => $order]) }}">
-                        <button class="btn btn-secondary">Перейти к заказу</button></a>
+                        <button class="btn btn-secondary btn-sm mb-2">Перейти к заказу</button></a>
                 </div>
-            </div>
-        @endif
-    @endforeach
-    <div class="d-flex justify-content-center pt-1">
+            @endif
+        @endforeach
+    </div>
+    <div class="d-flex justify-content-center">
         {{ $orders->links() }}
     </div>
 @endsection

@@ -3,6 +3,7 @@
 @section('content')
     @foreach($order->products as $product)
         <div class="container">
+            <h2 class="text-center mb2">ЗАКАЗ №{{ $order->id }}</h2>
             <div class="d-flex mb-3">
                 <div>
                     <img

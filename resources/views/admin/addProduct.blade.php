@@ -1,7 +1,8 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="mx-3 mb-2 w-25">
+    <div class="container mb-2 w-50">
+        <h2 class="text-center mb-2">ДОБАВЛЕНИЕ ТОВАРА</h2>
         <form method="POST" action="{{ route('storeProduct') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-2">
