@@ -4,12 +4,12 @@
     <div class="container mb-3">
         <h2 class="text-center mb-2">ПРОСМОТР ЗАКАЗОВ</h2>
         @foreach($orders as $order)
-            @if($order->customer)
+            @if($order->user)
                 <div class="mb-1">
-                    <label>Имя покупателя: {{ $order->customer->name }}</label>
+                    <label>Имя покупателя: {{ $order->user->name }}</label>
                 </div>
                 <div class="mb-1">
-                    <label>Электронная почта: {{ $order->customer->email }}</label>
+                    <label>Электронная почта: {{ $order->user->email }}</label>
                 </div>
                 <div class="mb-1">
                     <label>Цена заказа: {{ $order->price }}р.</label>
@@ -20,7 +20,13 @@
                 </div>
             @else
                 <div class="mb-1">
-                    <label>Имя покупателя:{{ $order->customer_name }}</label>
+                    <label>Имя покупателя:{{ $order->customer->name }}</label>
+                </div>
+                <div class="mb-1">
+                    <label>Имя покупателя:{{ $order->customer->email }}</label>
+                </div>
+                <div class="mb-1">
+                    <label>Цена заказа: {{ $order->price }}р.</label>
                 </div>
                 <div class="mb-1">
                     <a href="{{ route('order', ['order' => $order]) }}">
