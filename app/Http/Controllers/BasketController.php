@@ -9,6 +9,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class BasketController extends Controller
@@ -117,7 +118,6 @@ class BasketController extends Controller
 
         if (Auth::user()) {
             $order->user_id = Auth::user()->id;
-
         } else {
             $data = $request->validate([
                 'name' => 'required',
@@ -137,6 +137,12 @@ class BasketController extends Controller
             $order->products()->attach($product, ['count' => $count]);
         }
         session()->forget('products');
+
+        Mail::raw('it works!', function ($message) use ($order) {
+            $message->to($order->user->email ?? $order->customer->email)
+                ->subject('Спасибо за оформление заказа.');
+        });
+
         return redirect(route('index'))->with('message', 'Заказ оформлен. Спасибо за покупку!');
     }
 }
