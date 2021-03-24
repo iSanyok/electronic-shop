@@ -87,13 +87,19 @@ class AdminController extends Controller
     }
 
     /**
-     * Открыть страницу со списком всех заказов
+     * Открыть страницу со списком не обработанных заказов
      *
      * @return Renderable
      */
     public function orders(): Renderable
     {
-        $orders = Order::paginate(10);
+        $orders = Order::where('status', 0)->paginate(10);
+        return view('admin.orders', compact('orders'));
+    }
+
+    public function completedOrders()
+    {
+        $orders = Order::where('status', 1)->paginate(10);
         return view('admin.orders', compact('orders'));
     }
 

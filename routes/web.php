@@ -63,8 +63,10 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function() {
     // сохранить новый товар в базе данных
     Route::post('/add/product/store', [AdminController::class, 'storeProduct'])->name('storeProduct');
 
-    // открыть страницу со списками всех заказов
+    // открыть страницу с новыми заказами
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
+    // отрыть страницу с обработанными заказами
+    Route::get('/orders/completed', [AdminController::class, 'completedOrders'])->name('completedOrders');
     // открыть страницу определенного заказа
     Route::get('/orders/{order}', [AdminController::class, 'order'])->name('order');
     // подтвердить определенный заказ
