@@ -7,11 +7,11 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link {{Request::path() === 'admin/orders' ? 'active' : ''}}"
-                       aria-current="page" href="{{ route('orders') }}">Active</a>
+                       aria-current="page" href="{{ route('orders') }}">Новые</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{Request::path() === 'admin/orders/completed' ? 'active' : ''}}"
-                       href="{{ route('completedOrders') }}">Link</a>
+                       href="{{ route('completedOrders') }}">Подтвержденные</a>
                 </li>
             </ul>
         </div>
