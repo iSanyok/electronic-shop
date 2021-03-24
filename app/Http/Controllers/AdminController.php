@@ -91,7 +91,7 @@ class AdminController extends Controller
      *
      * @return Renderable
      */
-    public function orders(): Renderable
+    public function orders(Request $request): Renderable
     {
         $orders = Order::where('status', 0)->paginate(10);
         return view('admin.orders', compact('orders'));
@@ -125,6 +125,12 @@ class AdminController extends Controller
         $order->status = 1;
         $order->save();
         return redirect(route('orders'));
+    }
+
+    public function show(Request $request)
+    {
+        $order = Order::find($request['order']);
+        return view('admin.order', compact('order'));
     }
 
     public function addCoupon()

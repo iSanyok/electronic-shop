@@ -71,7 +71,8 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function() {
     Route::get('/orders/{order}', [AdminController::class, 'order'])->name('order');
     // подтвердить определенный заказ
     Route::post('/orders/confirm/{order}', [AdminController::class, 'confirm'])->name('confirm');
-
     // открыть страницу добавления нового купона
     Route::get('add/coupon', [AdminController::class, 'addCoupon'])->name('addCoupon');
+
+    Route::post('/order/', [AdminController::class, 'show'])->name('find');
 });
