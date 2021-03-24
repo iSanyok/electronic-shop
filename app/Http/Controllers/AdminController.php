@@ -127,7 +127,13 @@ class AdminController extends Controller
         return redirect(route('orders'));
     }
 
-    public function show(Request $request)
+    /**
+     * Найти заказ в базе данных
+     *
+     * @param Request $request
+     * @return Renderable
+     */
+    public function find(Request $request): Renderable
     {
         $order = Order::find($request['order']);
         return view('admin.order', compact('order'));

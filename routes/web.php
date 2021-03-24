@@ -63,16 +63,20 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function() {
     // сохранить новый товар в базе данных
     Route::post('/add/product/store', [AdminController::class, 'storeProduct'])->name('storeProduct');
 
-    // открыть страницу с новыми заказами
-    Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
-    // отрыть страницу с обработанными заказами
-    Route::get('/orders/completed', [AdminController::class, 'completedOrders'])->name('completedOrders');
-    // открыть страницу определенного заказа
-    Route::get('/orders/{order}', [AdminController::class, 'order'])->name('order');
-    // подтвердить определенный заказ
-    Route::post('/orders/confirm/{order}', [AdminController::class, 'confirm'])->name('confirm');
     // открыть страницу добавления нового купона
     Route::get('add/coupon', [AdminController::class, 'addCoupon'])->name('addCoupon');
 
-    Route::post('/order/', [AdminController::class, 'show'])->name('find');
+    Route::prefix('/orders')->group(function () {
+        // открыть страницу с новыми заказами
+        Route::get('/', [AdminController::class, 'orders'])->name('orders');
+        // открыть страницу с найденым в базе данных заказом
+        Route::post('/order/', [AdminController::class, 'find'])->name('find');
+        // отрыть страницу с обработанными заказами
+        Route::get('/completed', [AdminController::class, 'completedOrders'])->name('completedOrders');
+        // открыть страницу определенного заказа
+        Route::get('/{order}', [AdminController::class, 'order'])->name('order');
+        // подтвердить определенный заказ
+        Route::post('/confirm/{order}', [AdminController::class, 'confirm'])->name('confirm');
+    });
+
 });
