@@ -33,10 +33,12 @@
             </div>
         </div>
     @endforeach
+    @if(!$order->status)
     <div class="container mb-2">
         <form method="POST" action="{{ route('confirm', ['order' => $order]) }}">
             @csrf
             <button type="submit" class="btn btn-secondary">Подтвердить заказ</button>
         </form>
     </div>
+    @endif
 @endsection
